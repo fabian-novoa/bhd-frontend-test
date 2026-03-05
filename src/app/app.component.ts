@@ -24,15 +24,15 @@ export class AppComponent {
   });
 
   public mainMenuItems = [
-    { title: 'Mis Productos', url: '/dashboard/products', icon: 'wallet-outline' },
-    { title: 'Transacciones', url: '/dashboard/transactions', icon: 'swap-horizontal-outline' },
-    { title: 'Ofertas', url: '/dashboard/offers', icon: 'pricetag-outline' },
-    { title: 'Configuración', url: '/dashboard/settings', icon: 'settings-outline' },
+    { title: 'Mis Productos', url: '/dashboard/products', icon: 'wallet-outline', image: '/assets/images/save-money.svg' },
+    { title: 'Transacciones', url: '/dashboard/transactions', icon: 'swap-horizontal-outline', image: '/assets/images/pay.svg' },
+    { title: 'Ofertas', url: '/dashboard/offers', icon: 'pricetag-outline', image: '/assets/images/offers.svg' },
+    { title: 'Configuración', url: '/dashboard/settings', icon: 'settings-outline', image: '/assets/images/config.svg' },
   ];
 
   public secondaryMenuItems = [
-    { title: 'Contacto', url: '#', icon: 'call-outline' },
-    { title: 'Sucursales', url: '#', icon: 'business-outline' },
+    { title: 'Contacto', url: '#', icon: 'call-outline', image: '/assets/images/contact@2x.png' },
+    { title: 'Sucursales', url: '#', icon: 'business-outline', image: '/assets/images/location.png', iconClass: 'menu-item-icon-location' },
   ];
 
   constructor() {

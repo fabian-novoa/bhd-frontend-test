@@ -1,26 +1,30 @@
 <ion-content class="login-content">
+  <div class="menu-button-container">
+    <ion-menu-button color="success"></ion-menu-button>
+  </div>
+
   <div class="login-container">
     
     @if (error()) {
       <div class="error-banner" (click)="dismissError()">
-        <ion-text color="light">
+        <ion-text>
           {{ error() }}
         </ion-text>
       </div>
     }
 
     <div class="logo-section">
-      <h1 class="app-title">BHD</h1>
-      <p class="app-subtitle">Banca Digital</p>
+      <img src="/assets/images/bhd_logo.png" alt="Banco BHD León" />
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       
       <ion-item class="form-item" lines="none">
+        <i data-feather="user" class="input-icon input-icon-user"></i>
         <ion-input
           formControlName="userId"
           type="text"
-          placeholder="Usuario"
+          placeholder="Documento de identidad"
           [clearInput]="true"
           [class.invalid]="userIdControl?.invalid && userIdControl?.touched"
         ></ion-input>
@@ -34,6 +38,7 @@
       }
 
       <ion-item class="form-item" lines="none">
+        <i data-feather="key" class="input-icon input-icon-key"></i>
         <ion-input
           formControlName="password"
           type="password"
@@ -51,13 +56,13 @@
       }
 
       <div class="remember-me-container">
-        <ion-checkbox 
+        <ion-toggle
           [checked]="rememberMe()"
           (ionChange)="onRememberMeChange($event)"
           labelPlacement="end"
         >
           Recuerda mi usuario
-        </ion-checkbox>
+        </ion-toggle>
       </div>
 
       <ion-button
@@ -69,18 +74,11 @@
         @if (loading()) {
           <ion-spinner name="crescent"></ion-spinner>
         } @else {
-          Ingresar
+          INICIAR SESIÓN
         }
       </ion-button>
 
     </form>
-
-    <div class="footer-info">
-      <ion-text color="medium">
-        <p>Usuario: 00100010321</p>
-        <p>Contraseña: 1111</p>
-      </ion-text>
-    </div>
 
   </div>
 </ion-content>

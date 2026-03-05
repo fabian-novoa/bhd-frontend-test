@@ -97,4 +97,18 @@
   /** Product Type Colors **/
   --color-account-border: #2dd36f; /* Green for accounts (AC) */
   --color-creditcard-border: #00a3e0; /* Blue for credit cards (TC) */
+
+  /** BHD Green - Button Color **/
+  --bhd-green: #49B742;
+
+  /** Login Specific Colors - Pixel Perfect from XD **/
+  --login-input-bg: #FFFFFF;
+  --login-input-border: #CCCCCC99;
+  --login-input-placeholder: #CCCCCC;
+  --login-input-text: #666666;
+  --login-switch-inactive: #FFFFFF99;
+  --login-switch-border: #00000029;
+  --login-button: #49B742;
+  --login-button-text: #FFFFFF;
+  --login-remember-text: #CCCCCC;
 }

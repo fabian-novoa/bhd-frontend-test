@@ -3,62 +3,79 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         @if (isAuthenticated() && user()) {
-          <div class="menu-header">
-            <ion-avatar class="user-avatar">
-              <img [src]="user()!.photo" [alt]="fullName()" />
-            </ion-avatar>
-            <div class="user-info">
-              <h3>{{ fullName() }}</h3>
-              <p>Bienvenido</p>
+          <div class="menu-layout">
+            <div class="menu-header">
+              <ion-avatar class="user-avatar">
+                <img [src]="user()!.photo" [alt]="fullName()" />
+              </ion-avatar>
+              <div class="user-info">
+                <h3>{{ fullName() }}</h3>
+              </div>
+            </div>
+            <div class="menu-header-divider"></div>
+
+            <ion-list class="menu-list">
+              @for (item of mainMenuItems; track item.url) {
+                <ion-menu-toggle auto-hide="false">
+                  <ion-item 
+                    [routerLink]="[item.url]" 
+                    routerLinkActive="selected"
+                    lines="none" 
+                    detail="false"
+                    button
+                  >
+                    @if (item.image) {
+                      <img [src]="item.image" [alt]="item.title" class="menu-item-icon" slot="start" />
+                    } @else {
+                      <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                    }
+                    <ion-label>{{ item.title }}</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              }
+
+              <div class="menu-divider"></div>
+
+              @for (item of secondaryMenuItems; track item.url) {
+                <ion-menu-toggle auto-hide="false">
+                  <ion-item 
+                    [routerLink]="[item.url]" 
+                    lines="none" 
+                    detail="false"
+                    button
+                  >
+                    @if (item.image) {
+                      <img [src]="item.image" [alt]="item.title" [class]="'menu-item-icon' + (item.iconClass ? ' ' + item.iconClass : '')" slot="start" />
+                    } @else {
+                      <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                    }
+                    <ion-label>{{ item.title }}</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              }
+            </ion-list>
+
+            <div class="logout-container">
+              <ion-menu-toggle auto-hide="false">
+                <ion-item 
+                  (click)="onLogout()" 
+                  lines="none" 
+                  detail="false"
+                  button
+                  class="logout-item"
+                >
+                  <ion-label>CERRAR SESIÓN</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
             </div>
           </div>
-
-          <ion-list class="menu-list">
-            @for (item of mainMenuItems; track item.url) {
-              <ion-menu-toggle auto-hide="false">
-                <ion-item 
-                  [routerLink]="[item.url]" 
-                  routerLinkActive="selected"
-                  lines="none" 
-                  detail="false"
-                  button
-                >
-                  <ion-icon [name]="item.icon" slot="start"></ion-icon>
-                  <ion-label>{{ item.title }}</ion-label>
-                </ion-item>
-              </ion-menu-toggle>
-            }
-
-            <div class="menu-divider"></div>
-
-            @for (item of secondaryMenuItems; track item.url) {
-              <ion-menu-toggle auto-hide="false">
-                <ion-item 
-                  [routerLink]="[item.url]" 
-                  lines="none" 
-                  detail="false"
-                  button
-                >
-                  <ion-icon [name]="item.icon" slot="start"></ion-icon>
-                  <ion-label>{{ item.title }}</ion-label>
-                </ion-item>
-              </ion-menu-toggle>
-            }
-
-            <ion-menu-toggle auto-hide="false">
-              <ion-item 
-                (click)="onLogout()" 
-                lines="none" 
-                detail="false"
-                button
-                class="logout-item"
-              >
-                <ion-icon name="log-out-outline" slot="start"></ion-icon>
-                <ion-label>Cerrar Sesión</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          </ion-list>
         } @else {
+          <div class="menu-header-public">
+            <div class="menu-header-public-inner">
+              <img src="/assets/images/bhd_logo.png" alt="Banco BHD León" class="menu-logo" />
+            </div>
+            <div class="menu-header-divider"></div>
+          </div>
           <ion-list class="menu-list menu-list-public">
             @for (item of secondaryMenuItems; track item.url) {
               <ion-menu-toggle auto-hide="false">
@@ -68,7 +85,11 @@
                   detail="false"
                   button
                 >
-                  <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                  @if (item.image) {
+                    <img [src]="item.image" [alt]="item.title" [class]="'menu-item-icon' + (item.iconClass ? ' ' + item.iconClass : '')" slot="start" />
+                  } @else {
+                    <ion-icon [name]="item.icon" slot="start"></ion-icon>
+                  }
                   <ion-label>{{ item.title }}</ion-label>
                 </ion-item>
               </ion-menu-toggle>

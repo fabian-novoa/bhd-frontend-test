@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonContent, IonSpinner, IonInput, IonButton, IonCheckbox, IonItem, IonLabel, IonText } from '@ionic/angular/standalone';
+import { IonContent, IonSpinner, IonInput, IonButton, IonItem, IonText, IonMenuButton, IonToggle } from '@ionic/angular/standalone';
 import { AuthFacade } from '@presentation/facades';
+import * as feather from 'feather-icons';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,13 @@ import { AuthFacade } from '@presentation/facades';
     IonSpinner,
     IonInput,
     IonButton,
-    IonCheckbox,
     IonItem,
-    IonText
+    IonText,
+    IonMenuButton,
+    IonToggle
   ]
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, AfterViewInit {
   private fb = inject(FormBuilder);
   private authFacade = inject(AuthFacade);
   private router = inject(Router);
@@ -34,6 +36,10 @@ export class LoginPage implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
     this.loadRememberedUser();
+  }
+
+  ngAfterViewInit(): void {
+    feather.replace();
   }
 
   private initializeForm(): void {
