@@ -41,6 +41,16 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./presentation/features/dashboard/settings/settings.page').then((m) => m.SettingsPage),
       },
+      {
+        path: 'contact',
+        loadComponent: () =>
+          import('./presentation/features/dashboard/contact/contact.page').then((m) => m.ContactPage),
+      },
+      {
+        path: 'branch',
+        loadComponent: () =>
+          import('./presentation/features/dashboard/branch/branch.page').then((m) => m.BranchPage),
+      },
     ],
   },
   {
