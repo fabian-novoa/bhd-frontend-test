@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from '@presentation/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -11,10 +12,23 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./presentation/features/auth/login/login.page').then((m) => m.LoginPage),
   },
+  // Public pages (no auth required, no tabs)
+  {
+    path: 'contact',
+    loadComponent: () =>
+      import('./presentation/features/dashboard/contact/contact.page').then((m) => m.ContactPage),
+  },
+  {
+    path: 'branch',
+    loadComponent: () =>
+      import('./presentation/features/dashboard/branch/branch.page').then((m) => m.BranchPage),
+  },
+  // Protected routes (require auth)
   {
     path: 'dashboard',
     loadComponent: () =>
       import('./presentation/features/dashboard/dashboard.page').then((m) => m.DashboardPage),
+    canActivate: [authGuard],
     children: [
       {
         path: '',
@@ -41,21 +55,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./presentation/features/dashboard/settings/settings.page').then((m) => m.SettingsPage),
       },
-      {
-        path: 'contact',
-        loadComponent: () =>
-          import('./presentation/features/dashboard/contact/contact.page').then((m) => m.ContactPage),
-      },
-      {
-        path: 'branch',
-        loadComponent: () =>
-          import('./presentation/features/dashboard/branch/branch.page').then((m) => m.BranchPage),
-      },
     ],
   },
   {
     path: 'product-detail',
     loadComponent: () =>
       import('./presentation/features/dashboard/product-detail/product-detail.page').then((m) => m.ProductDetailPage),
+    canActivate: [authGuard],
   },
 ];
+

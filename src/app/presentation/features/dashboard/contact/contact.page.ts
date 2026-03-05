@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { 
-  IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton,
+  IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton,
   IonContent
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { arrowBack } from 'ionicons/icons';
 import { ScreenPlaceholderComponent } from '@shared/components';
 
 @Component({
@@ -15,9 +17,13 @@ import { ScreenPlaceholderComponent } from '@shared/components';
     IonToolbar,
     IonTitle,
     IonButtons,
-    IonMenuButton,
+    IonBackButton,
     IonContent,
     ScreenPlaceholderComponent
   ]
 })
-export class ContactPage {}
+export class ContactPage {
+  constructor() {
+    addIcons({ arrowBack });
+  }
+}

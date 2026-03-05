@@ -31,8 +31,8 @@ export class AppComponent {
   ];
 
   public secondaryMenuItems = [
-    { title: 'Contacto', url: '/dashboard/contact', icon: 'call-outline', image: '/assets/images/contact@2x.png' },
-    { title: 'Sucursales', url: '/dashboard/branch', icon: 'business-outline', image: '/assets/images/location.png', iconClass: 'menu-item-icon-location' },
+    { title: 'Contacto', url: '/contact', icon: 'call-outline', image: '/assets/images/contact@2x.png' },
+    { title: 'Sucursales', url: '/branch', icon: 'business-outline', image: '/assets/images/location.png', iconClass: 'menu-item-icon-location' },
   ];
 
   constructor() {
@@ -48,7 +48,7 @@ export class AppComponent {
   }
 
   isAuthenticated(): boolean {
-    return !this.isLoginPage();
+    return this.authFacade.isAuthenticated();
   }
 }
 

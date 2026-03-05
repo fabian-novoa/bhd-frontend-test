@@ -19,6 +19,14 @@ export class AuthFacade {
   readonly loading = computed(() => this.loadingSignal());
   readonly error = computed(() => this.errorSignal());
 
+  /**
+   * Check if user is authenticated (has valid token)
+   */
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('bhd_access_token');
+    return !!token;
+  }
+
   login(credentials: LoginRequest): void {
     this.loadingSignal.set(true);
     this.errorSignal.set(null);
