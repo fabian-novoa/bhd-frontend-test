@@ -16,19 +16,19 @@
   margin-bottom: var(--spacing-xl);
 
   .section-title {
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 14px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
     font-weight: 700;
     text-transform: uppercase;
     margin: 0 0 var(--spacing-md) 0;
     padding: 0;
 
     &.section-title--accounts {
-      color: #49B742;
+      color: var(--bhd-green);
     }
 
     &.section-title--cards {
-      color: #00477A;
+      color: var(--color-card-blue);
     }
   }
 }

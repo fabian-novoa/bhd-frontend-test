@@ -51,69 +51,15 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-// Utility classes for spacing
-.mt-xs { margin-top: var(--spacing-xs); }
-.mt-sm { margin-top: var(--spacing-sm); }
-.mt-md { margin-top: var(--spacing-md); }
-.mt-lg { margin-top: var(--spacing-lg); }
-.mt-xl { margin-top: var(--spacing-xl); }
-
-.mb-xs { margin-bottom: var(--spacing-xs); }
-.mb-sm { margin-bottom: var(--spacing-sm); }
-.mb-md { margin-bottom: var(--spacing-md); }
-.mb-lg { margin-bottom: var(--spacing-lg); }
-.mb-xl { margin-bottom: var(--spacing-xl); }
-
-.pt-xs { padding-top: var(--spacing-xs); }
-.pt-sm { padding-top: var(--spacing-sm); }
-.pt-md { padding-top: var(--spacing-md); }
-.pt-lg { padding-top: var(--spacing-lg); }
-.pt-xl { padding-top: var(--spacing-xl); }
-
-.pb-xs { padding-bottom: var(--spacing-xs); }
-.pb-sm { padding-bottom: var(--spacing-sm); }
-.pb-md { padding-bottom: var(--spacing-md); }
-.pb-lg { padding-bottom: var(--spacing-lg); }
-.pb-xl { padding-bottom: var(--spacing-xl); }
-
-.p-xs { padding: var(--spacing-xs); }
-.p-sm { padding: var(--spacing-sm); }
-.p-md { padding: var(--spacing-md); }
-.p-lg { padding: var(--spacing-lg); }
-.p-xl { padding: var(--spacing-xl); }
-
-// Text utilities
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-.text-bold { font-weight: 600; }
-.text-semibold { font-weight: 500; }
-.text-normal { font-weight: 400; }
-
-// Display utilities
-.d-flex { display: flex; }
-.flex-column { flex-direction: column; }
-.flex-row { flex-direction: row; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.align-center { align-items: center; }
-.gap-sm { gap: var(--spacing-sm); }
-.gap-md { gap: var(--spacing-md); }
-
-// Width utilities
-.w-100 { width: 100%; }
-.h-100 { height: 100%; }
-
 /**
  * Page content background - Dashboard and internal pages
  */
 ion-content.page-content {
-  --background: #F5F5F5;
-  --padding-start: 24px;
+  --background: var(--color-background-page);
+  --padding-start: var(--spacing-lg);
   --padding-end: 25px;
-  --padding-top: 16px;
-  --padding-bottom: 16px;
+  --padding-top: var(--spacing-md);
+  --padding-bottom: var(--spacing-md);
 }
 
 /**
@@ -125,8 +71,8 @@ ion-content.page-content {
   z-index: 10;
 
   ion-toolbar {
-    --background: #FFFFFF;
-    --color: #666666;
+    --background: var(--color-white);
+    --color: var(--text-primary);
     --min-height: 62px;
     height: 62px;
     display: flex;
@@ -148,19 +94,19 @@ ion-content.page-content {
 
   ion-menu-button,
   ion-back-button {
-    --color: #49B742;
-    --icon-font-size: 24px;
+    --color: var(--bhd-green);
+    --icon-font-size: var(--spacing-lg);
     --padding-top: 0;
     --padding-bottom: 0;
-    --padding-start: 16px;
-    --padding-end: 8px;
+    --padding-start: var(--spacing-md);
+    --padding-end: var(--spacing-sm);
     margin: 0;
     min-width: 44px;
     height: 44px;
 
     &::part(icon) {
-      font-size: 24px;
-      color: #49B742;
+      font-size: var(--spacing-lg);
+      color: var(--bhd-green);
     }
 
     &::part(text) {
@@ -178,9 +124,9 @@ ion-content.page-content {
 
   ion-title {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: var(--spacing-md);
     font-weight: 500;
-    color: #666666;
+    color: var(--text-primary);
     text-align: center;
     padding-inline: 0;
     margin: 0;
@@ -190,8 +136,8 @@ ion-content.page-content {
   }
 
   .page-header-divider {
-    height: 4px;
-    background: #49B742;
+    height: var(--spacing-xs);
+    background: var(--bhd-green);
     width: 100%;
     box-shadow: none;
     position: relative;

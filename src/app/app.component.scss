@@ -1,9 +1,9 @@
 ion-menu {
-  --background: #FFFFFF;
+  --background: var(--color-white);
 }
 
 ion-menu ion-content {
-  --background: #FFFFFF;
+  --background: var(--color-white);
   --padding-start: 0;
   --padding-end: 0;
 }
@@ -15,18 +15,18 @@ ion-menu ion-content {
 }
 
 ion-menu ion-list {
-  --background: #FFFFFF;
-  background: #FFFFFF;
+  --background: var(--color-white);
+  background: var(--color-white);
 }
 
 .menu-header {
-  padding: 0 24px;
+  padding: 0 var(--spacing-lg);
   height: 62px;
   min-height: 62px;
-  background: #FFFFFF;
+  background: var(--color-white);
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--spacing-md);
   margin-bottom: 0;
 
   .user-avatar {
@@ -39,11 +39,11 @@ ion-menu ion-list {
     flex: 1;
     
     h3 {
-      color: #666666;
-      font-size: 14px;
+      color: var(--text-primary);
+      font-size: var(--font-size-sm);
       font-weight: 400;
       margin: 0;
-      font-family: 'Trebuchet MS', sans-serif;
+      font-family: var(--font-family-primary);
     }
   }
 }
@@ -55,12 +55,12 @@ ion-menu ion-list {
   min-height: 0;
 
   &.menu-list-public {
-    padding-top: 24px;
+    padding-top: var(--spacing-lg);
   }
 
   ion-item {
-    --background: #FFFFFF;
-    --color: #666666;
+    --background: var(--color-white);
+    --color: var(--text-primary);
     --padding-start: var(--spacing-lg);
     --padding-end: var(--spacing-lg);
     --min-height: 50px;
@@ -80,15 +80,15 @@ ion-menu ion-list {
     }
 
     ion-icon {
-      font-size: 24px;
-      margin-right: 16px;
+      font-size: var(--spacing-lg);
+      margin-right: var(--spacing-md);
       color: var(--ion-color-medium);
     }
 
     .menu-item-icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 16px;
+      width: var(--spacing-lg);
+      height: var(--spacing-lg);
+      margin-right: var(--spacing-md);
       object-fit: contain;
 
       &.menu-item-icon-location {
@@ -98,10 +98,10 @@ ion-menu ion-list {
     }
 
     ion-label {
-      font-family: 'Trebuchet MS', sans-serif;
-      font-size: 12px;
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-xs);
       font-weight: 400;
-      color: #666666;
+      color: var(--text-primary);
       text-align: left;
     }
 
@@ -110,25 +110,25 @@ ion-menu ion-list {
 
 .logout-container {
   flex-shrink: 0;
-  padding: 0 16px 24px 16px;
+  padding: 0 var(--spacing-md) var(--spacing-lg) var(--spacing-md);
   margin-top: auto;
 
   ion-item.logout-item {
-    --background: #FFFFFF;
-    --border-radius: 8px;
+    --background: var(--color-white);
+    --border-radius: var(--border-radius-md);
     --padding-start: var(--spacing-lg);
     --padding-end: var(--spacing-lg);
     --min-height: 44px;
     height: 44px;
-    border: 1px solid #49B742;
-    border-radius: 8px;
+    border: 1px solid var(--bhd-green);
+    border-radius: var(--border-radius-md);
     justify-content: center;
     
     ion-label {
-      font-family: 'Trebuchet MS', sans-serif;
-      font-size: 12px;
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-xs);
       font-weight: 700;
-      color: #49B742;
+      color: var(--bhd-green);
       text-align: center;
       text-transform: uppercase;
     }
@@ -136,17 +136,17 @@ ion-menu ion-list {
 }
 
 .menu-header-divider {
-  height: 4px;
-  background: #49B742;
+  height: var(--spacing-xs);
+  background: var(--bhd-green);
   width: 100%;
 }
 
 .menu-header-public {
-  background: #FFFFFF;
+  background: var(--color-white);
 
   .menu-header-public-inner {
     padding-top: 12px;
-    padding-bottom: 4px;
+    padding-bottom: var(--spacing-xs);
     padding-left: var(--spacing-lg);
     padding-right: var(--spacing-lg);
     display: flex;
@@ -162,8 +162,8 @@ ion-menu ion-list {
   }
 
   .menu-header-divider {
-    height: 4px;
-    background: #49B742;
+    height: var(--spacing-xs);
+    background: var(--bhd-green);
     width: 100%;
   }
 }
@@ -171,7 +171,7 @@ ion-menu ion-list {
 
 .menu-divider {
   height: 1px;
-  background: #CCCCCC99;
+  background: var(--color-border-light);
   width: 100%;
   margin: 28px 0;
 }

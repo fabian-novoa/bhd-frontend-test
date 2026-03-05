@@ -1,9 +1,9 @@
 .product-card {
-  --background: #FFFFFF;
-  --border-radius: 0 4px 4px 0;
+  --background: var(--color-white);
+  --border-radius: 0 var(--spacing-xs) var(--spacing-xs) 0;
   --box-shadow: none;
-  border-radius: 0 4px 4px 0;
-  border: 1px solid #CCCCCC99;
+  border-radius: 0 var(--spacing-xs) var(--spacing-xs) 0;
+  border: 1px solid var(--color-border-light);
   box-shadow: none;
   margin-inline-start: 0;
   margin-inline-end: 0;
@@ -43,12 +43,12 @@
   }
 
   .product-card-title {
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 14px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
     font-weight: 400;
     line-height: 40px;
-    color: #666666;
-    margin-bottom: 8px;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
   }
 
   ion-card-content {
@@ -61,7 +61,7 @@
 }
 
 .card-card {
-  border-left: 6px solid #00477A;
+  border-left: 6px solid var(--color-card-blue);
 }
 
 .amount-container {
@@ -76,11 +76,11 @@
   }
 
   .amount-label {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: var(--font-family-primary);
     font-size: 10px;
     font-weight: 400;
     line-height: 1;
-    color: #999999;
+    color: var(--text-secondary);
     margin-top: 3px;
   }
 
@@ -91,24 +91,24 @@
   }
 
   .amount-value {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: var(--font-family-primary);
     font-weight: 400;
     line-height: 1;
-    color: #666666;
+    color: var(--text-primary);
     display: inline-flex;
     align-items: baseline;
   }
 
   .amount-symbol {
-    margin-right: 8px;
+    margin-right: var(--spacing-sm);
   }
 
   .amount-symbol,
   .amount-decimal {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
 
   .amount-integer {
-    font-size: 24px;
+    font-size: var(--font-size-xl);
   }
 }

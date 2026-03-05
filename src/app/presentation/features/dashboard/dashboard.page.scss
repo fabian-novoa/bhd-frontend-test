@@ -1,15 +1,15 @@
 ion-tab-bar {
-  --background: #FFFFFF;
-  --color: #666666;
-  --color-selected: #49B742;
+  --background: var(--color-white);
+  --color: var(--text-primary);
+  --color-selected: var(--bhd-green);
   padding-top: 12px;
-  padding-bottom: 14px;
-  border-top: 4px solid #49B742;
+  padding-bottom: var(--font-size-sm);
+  border-top: var(--spacing-xs) solid var(--bhd-green);
 }
 
 ion-tab-button {
-  --color: #666666;
-  --color-selected: #49B742;
+  --color: var(--text-primary);
+  --color-selected: var(--bhd-green);
 
   .tab-icon-wrapper {
     display: inline-flex;

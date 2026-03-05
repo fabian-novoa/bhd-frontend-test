@@ -1,7 +1,12 @@
-import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
-import { of, delay } from 'rxjs';
+import { HttpInterceptorFn, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { of, delay, throwError } from 'rxjs';
 
 const MOCK_DELAY = 800;
+
+const VALID_CREDENTIALS = {
+  userId: '00100010321',
+  password: '1234'
+};
 
 const MOCK_RESPONSES: Record<string, any> = {
   '/sign_in': {
@@ -48,8 +53,26 @@ const MOCK_RESPONSES: Record<string, any> = {
 };
 
 export const mockInterceptor: HttpInterceptorFn = (req, next) => {
-  const mockResponse = MOCK_RESPONSES[req.url];
+  if (req.url === '/sign_in') {
+    const body = req.body as any;
+    
+    if (body?.userId === VALID_CREDENTIALS.userId && body?.password === VALID_CREDENTIALS.password) {
+      const response = new HttpResponse({
+        status: 200,
+        body: MOCK_RESPONSES['/sign_in']
+      });
+      return of(response).pipe(delay(MOCK_DELAY));
+    } else {
+      const errorResponse = new HttpErrorResponse({
+        error: { message: 'Usuario y/o contraseña incorrectos' },
+        status: 401,
+        statusText: 'Unauthorized'
+      });
+      return throwError(() => errorResponse).pipe(delay(MOCK_DELAY));
+    }
+  }
 
+  const mockResponse = MOCK_RESPONSES[req.url];
   if (mockResponse) {
     const response = new HttpResponse({
       status: 200,

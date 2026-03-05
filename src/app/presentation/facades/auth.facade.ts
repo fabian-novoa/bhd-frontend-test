@@ -14,6 +14,7 @@ export class AuthFacade {
 
   private loadingSignal = signal(false);
   private errorSignal = signal<string | null>(null);
+  private errorTimeout?: ReturnType<typeof setTimeout>;
 
   readonly loading = computed(() => this.loadingSignal());
   readonly error = computed(() => this.errorSignal());
@@ -21,6 +22,7 @@ export class AuthFacade {
   login(credentials: LoginRequest): void {
     this.loadingSignal.set(true);
     this.errorSignal.set(null);
+    this.clearErrorTimeout();
 
     this.loginUseCase.execute(credentials).pipe(
       tap(() => {
@@ -28,6 +30,7 @@ export class AuthFacade {
       }),
       catchError(() => {
         this.errorSignal.set('Usuario y/o contraseña incorrectos');
+        this.startErrorTimeout();
         return of(null);
       }),
       finalize(() => this.loadingSignal.set(false))
@@ -41,5 +44,19 @@ export class AuthFacade {
 
   clearError(): void {
     this.errorSignal.set(null);
+    this.clearErrorTimeout();
+  }
+
+  private startErrorTimeout(): void {
+    this.errorTimeout = setTimeout(() => {
+      this.errorSignal.set(null);
+    }, 3000);
+  }
+
+  private clearErrorTimeout(): void {
+    if (this.errorTimeout) {
+      clearTimeout(this.errorTimeout);
+      this.errorTimeout = undefined;
+    }
   }
 }
