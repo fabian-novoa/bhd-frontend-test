@@ -1,0 +1,21 @@
+.detail-texts {
+  margin-top: 100px;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  color: #CCCCCC;
+  text-align: center;
+
+  &--compact {
+    margin-top: 195px;
+  }
+
+  &__title {
+    margin: 0 0 30px 0;
+    font-size: 24px;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 14px;
+  }
+}

@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { 
   IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton,
-  IonContent, IonButton, IonText
+  IonContent
 } from '@ionic/angular/standalone';
-import { AuthFacade } from '@presentation/facades';
+import { ScreenPlaceholderComponent } from '@shared/components';
 
 @Component({
   selector: 'app-settings',
@@ -17,14 +17,7 @@ import { AuthFacade } from '@presentation/facades';
     IonButtons,
     IonMenuButton,
     IonContent,
-    IonButton,
-    IonText
+    ScreenPlaceholderComponent
   ]
 })
-export class SettingsPage {
-  private authFacade = inject(AuthFacade);
-
-  onLogout(): void {
-    this.authFacade.logout();
-  }
-}
+export class SettingsPage {}

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { 
   IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton,
-  IonContent, IonText
+  IonContent
 } from '@ionic/angular/standalone';
+import { ScreenPlaceholderComponent } from '@shared/components';
 
 @Component({
   selector: 'app-transactions',
@@ -16,7 +17,7 @@ import {
     IonButtons,
     IonMenuButton,
     IonContent,
-    IonText
+    ScreenPlaceholderComponent
   ]
 })
 export class TransactionsPage {}

@@ -41,11 +41,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./presentation/features/dashboard/settings/settings.page').then((m) => m.SettingsPage),
       },
-      {
-        path: 'product-detail',
-        loadComponent: () =>
-          import('./presentation/features/dashboard/product-detail/product-detail.page').then((m) => m.ProductDetailPage),
-      },
     ],
+  },
+  {
+    path: 'product-detail',
+    loadComponent: () =>
+      import('./presentation/features/dashboard/product-detail/product-detail.page').then((m) => m.ProductDetailPage),
   },
 ];

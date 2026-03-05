@@ -1,0 +1,8 @@
+<div class="detail-texts" [class.detail-texts--compact]="marginTop() === 'compact'">
+  <p class="detail-texts__title">Pantalla<br>de {{ screenName() }}</p>
+  @if (subtitleVariant() === 'full') {
+  <p class="detail-texts__subtitle">Esta pantalla es únicamente para validar<br>como se construye la navegación de la<br>aplicación, y el paso de datos entre pantallas;<br>por lo tanto, este puede ser el único<br>contenido</p>
+} @else {
+  <p class="detail-texts__subtitle">Esta pantalla es únicamente para validar<br>como se construye la navegación de la<br>aplicación, por lo tanto, este puede ser el<br>único contenido</p>
+}
+</div>

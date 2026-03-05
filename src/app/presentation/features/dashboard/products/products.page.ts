@@ -1,12 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController, ViewWillEnter, ViewDidEnter } from '@ionic/angular/standalone';
 import { 
   IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton,
-  IonContent, IonSpinner, IonCard, IonCardHeader, IonCardTitle,
-  IonCardSubtitle, IonCardContent, IonText
+  IonContent, IonSpinner
 } from '@ionic/angular/standalone';
 import { DashboardFacade } from '@presentation/facades';
-import { CurrencyPipe } from '@shared/pipes';
+import { ProductCardComponent, ScreenPlaceholderComponent } from '@shared/components';
 import { Product } from '@domain/models';
 
 @Component({
@@ -22,18 +21,13 @@ import { Product } from '@domain/models';
     IonMenuButton,
     IonContent,
     IonSpinner,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonText,
-    CurrencyPipe
+    ProductCardComponent,
+    ScreenPlaceholderComponent
   ]
 })
 export class ProductsPage implements OnInit {
   private dashboardFacade = inject(DashboardFacade);
-  private router = inject(Router);
+  private navCtrl = inject(NavController);
 
   readonly loading = this.dashboardFacade.loading;
   readonly accounts = this.dashboardFacade.accounts;
@@ -43,8 +37,8 @@ export class ProductsPage implements OnInit {
     this.dashboardFacade.loadDashboardData();
   }
 
-  onProductClick(product: Product): void {
-    this.router.navigate(['/dashboard/product-detail'], {
+  async onProductClick(product: Product): Promise<void> {
+    await this.navCtrl.navigateForward('/product-detail', {
       state: { product }
     });
   }

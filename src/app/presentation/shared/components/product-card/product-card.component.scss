@@ -1,0 +1,114 @@
+.product-card {
+  --background: #FFFFFF;
+  --border-radius: 0 4px 4px 0;
+  --box-shadow: none;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid #CCCCCC99;
+  box-shadow: none;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-bottom: var(--spacing-md);
+
+  &.product-card--clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  ion-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .product-card-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .product-card-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .product-card-title {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #666666;
+    margin-bottom: 8px;
+  }
+
+  ion-card-content {
+    padding-top: 0;
+  }
+}
+
+.account-card {
+  border-left: 6px solid var(--color-account-border);
+}
+
+.card-card {
+  border-left: 6px solid #00477A;
+}
+
+.amount-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  .amount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .amount-label {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+    color: #999999;
+    margin-top: 3px;
+  }
+
+  .amount-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .amount-value {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    color: #666666;
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+  .amount-symbol {
+    margin-right: 8px;
+  }
+
+  .amount-symbol,
+  .amount-decimal {
+    font-size: 14px;
+  }
+
+  .amount-integer {
+    font-size: 24px;
+  }
+}

@@ -16,76 +16,19 @@
   margin-bottom: var(--spacing-xl);
 
   .section-title {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    color: var(--ion-color-dark);
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
     margin: 0 0 var(--spacing-md) 0;
-    padding: 0 var(--spacing-xs);
-  }
-}
+    padding: 0;
 
-.product-card {
-  margin-bottom: var(--spacing-md);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    &.section-title--accounts {
+      color: #49B742;
+    }
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  ion-card-header {
-    padding-bottom: var(--spacing-sm);
-  }
-
-  ion-card-subtitle {
-    font-size: var(--font-size-sm);
-    color: var(--ion-color-medium);
-    margin-bottom: var(--spacing-xs);
-  }
-
-  ion-card-title {
-    font-size: var(--font-size-md);
-    font-weight: 600;
-    color: var(--ion-color-dark);
-  }
-
-  ion-card-content {
-    padding-top: 0;
-  }
-}
-
-.account-card {
-  border-left: 4px solid var(--color-account-border);
-}
-
-.card-card {
-  border-left: 4px solid var(--color-creditcard-border);
-}
-
-.amount-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-
-  .amount-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .amount-label {
-    font-size: var(--font-size-sm);
-    color: var(--ion-color-medium);
-  }
-
-  .amount-value {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    color: var(--ion-color-primary);
+    &.section-title--cards {
+      color: #00477A;
+    }
   }
 }

@@ -1,0 +1,57 @@
+<ion-card
+  [class]="'product-card ' + (isAccount(product()) ? 'account-card' : 'card-card') + (clickable() ? ' product-card--clickable' : '')"
+  [button]="clickable()"
+  (click)="onCardClick()"
+>
+  <ion-card-header>
+    @if (isAccount(product())) {
+      <img src="/assets/images/save-money-grey.svg" alt="" class="product-card-icon" />
+    } @else {
+      <img src="/assets/images/card.svg" alt="" class="product-card-icon" />
+    }
+    <div class="product-card-info">
+      <div class="product-card-title">{{ product().alias }} - {{ product().number | lastDigits }}</div>
+    </div>
+  </ion-card-header>
+  <ion-card-content>
+    @if (isAccount(product())) {
+      <div class="amount-container">
+        @let parts = getAccount(product())!.availableAmount | amountParts: 'RD';
+        <div class="amount-block">
+          <span class="amount-value">
+            <span class="amount-symbol">{{ parts.symbol }}</span>
+            <span class="amount-integer">{{ parts.integerPart }}</span>
+            <span class="amount-decimal">{{ parts.decimalPart }}</span>
+          </span>
+          <span class="amount-label">Balance disponible</span>
+        </div>
+      </div>
+    }
+
+    @if (isCreditCard(product())) {
+      <div class="amount-container">
+        <div class="amount-block">
+          <div class="amount-row">
+            @let partsRD = getCreditCard(product())!.availableAmountRD | amountParts: 'RD';
+            <span class="amount-value">
+              <span class="amount-symbol">{{ partsRD.symbol }}</span>
+              <span class="amount-integer">{{ partsRD.integerPart }}</span>
+              <span class="amount-decimal">{{ partsRD.decimalPart }}</span>
+            </span>
+          </div>
+          @if (getCreditCard(product())!.availableAmountUS > 0) {
+            <div class="amount-row">
+              @let partsUS = getCreditCard(product())!.availableAmountUS | amountParts: 'US';
+              <span class="amount-value">
+                <span class="amount-symbol">{{ partsUS.symbol }}</span>
+                <span class="amount-integer">{{ partsUS.integerPart }}</span>
+                <span class="amount-decimal">{{ partsUS.decimalPart }}</span>
+              </span>
+            </div>
+          }
+          <span class="amount-label">Balance disponible</span>
+        </div>
+      </div>
+    }
+  </ion-card-content>
+</ion-card>

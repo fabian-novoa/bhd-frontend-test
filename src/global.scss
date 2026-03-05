@@ -106,10 +106,24 @@ body {
 .h-100 { height: 100%; }
 
 /**
+ * Page content background - Dashboard and internal pages
+ */
+ion-content.page-content {
+  --background: #F5F5F5;
+  --padding-start: 24px;
+  --padding-end: 25px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+}
+
+/**
  * Page Header - Logged-in dashboard pages
- * Matches login: white bg, green hamburger, green divider
  */
 .page-header {
+  box-shadow: none;
+  contain: layout style;
+  z-index: 10;
+
   ion-toolbar {
     --background: #FFFFFF;
     --color: #666666;
@@ -117,38 +131,97 @@ body {
     height: 62px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    contain: layout style;
   }
 
   ion-buttons {
-    align-self: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+  }
+
+  ion-menu-button,
+  ion-back-button {
+    --color: #49B742;
+    --icon-font-size: 24px;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 16px;
+    --padding-end: 8px;
+    margin: 0;
+    min-width: 44px;
+    height: 44px;
+
+    &::part(icon) {
+      font-size: 24px;
+      color: #49B742;
+    }
+
+    &::part(text) {
+      display: none;
+    }
   }
 
   ion-menu-button {
-    --color: #49B742;
     font-size: 34px;
-    --padding-top: 0;
-    --padding-bottom: 0;
+    width: 54px;
+    height: 54px;
     --padding-start: 20px;
     --padding-end: 0;
   }
 
   ion-title {
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     color: #666666;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
     text-align: center;
     padding-inline: 0;
+    margin: 0;
+    position: relative;
+    display: block;
+    pointer-events: none;
   }
 
   .page-header-divider {
     height: 4px;
     background: #49B742;
     width: 100%;
+    box-shadow: none;
+    position: relative;
+  }
+}
+
+/**
+ * Ionic Page Transition - Ensure smooth animations
+ */
+.ion-page {
+  contain: layout style;
+  z-index: 0;
+
+  &.ion-page-hidden {
+    z-index: 0 !important;
+  }
+
+  &.ion-page-invisible {
+    z-index: 1 !important;
+  }
+}
+
+ion-header {
+  contain: layout style;
+}
+
+ion-router-outlet {
+  contain: layout style;
+  
+  .ion-page {
+    will-change: transform;
   }
 }

@@ -1,13 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { NavController, ViewWillEnter } from '@ionic/angular/standalone';
 import {
   IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton,
-  IonContent, IonCard, IonCardHeader, IonCardTitle,
-  IonCardSubtitle, IonCardContent, IonText
+  IonContent
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { arrowBack } from 'ionicons/icons';
 import { Product } from '@domain/models';
-import { CurrencyPipe } from '@shared/pipes';
+import { ProductCardComponent, ScreenPlaceholderComponent } from '@shared/components';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,45 +22,38 @@ import { CurrencyPipe } from '@shared/pipes';
     IonButtons,
     IonBackButton,
     IonContent,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonText,
-    CurrencyPipe
+    ProductCardComponent,
+    ScreenPlaceholderComponent
   ]
 })
-export class ProductDetailPage {
+export class ProductDetailPage implements OnInit, ViewWillEnter {
   private router = inject(Router);
-  private location = inject(Location);
+  private navCtrl = inject(NavController);
 
   product: Product | null = null;
 
   constructor() {
+    addIcons({ arrowBack });
+  }
+
+  ngOnInit(): void {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.product = navigation.extras.state['product'];
     }
 
     if (!this.product) {
-      this.location.back();
+      this.goBack();
     }
   }
 
-  isAccount(): boolean {
-    return this.product?.productType === 'AC';
+  ionViewWillEnter(): void {
+    if (!this.product) {
+      this.goBack();
+    }
   }
 
-  isCreditCard(): boolean {
-    return this.product?.productType === 'TC';
-  }
-
-  get account() {
-    return this.isAccount() ? this.product as any : null;
-  }
-
-  get creditCard() {
-    return this.isCreditCard() ? this.product as any : null;
+  goBack(): void {
+    this.navCtrl.back();
   }
 }

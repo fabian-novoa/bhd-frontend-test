@@ -1,4 +1,4 @@
-<ion-header class="page-header">
+<ion-header class="page-header ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -8,20 +8,6 @@
   <div class="page-header-divider"></div>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="settings-container">
-    <ion-text color="medium">
-      <h2>Configuración</h2>
-      <p>Personaliza tu experiencia y gestiona tu cuenta.</p>
-    </ion-text>
-
-    <ion-button 
-      expand="block" 
-      color="danger" 
-      (click)="onLogout()"
-      class="logout-button"
-    >
-      Cerrar Sesión
-    </ion-button>
-  </div>
+<ion-content class="page-content ion-padding">
+  <app-screen-placeholder screenName="Configuración" />
 </ion-content>

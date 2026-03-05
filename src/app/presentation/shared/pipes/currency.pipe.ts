@@ -13,6 +13,6 @@ export class CurrencyPipe implements PipeTransform {
       maximumFractionDigits: 2
     });
 
-    return currency === 'RD' ? `RD$${formatted}` : `US$${formatted}`;
+    return currency === 'RD' ? `RD$ ${formatted}` : `US$ ${formatted}`;
   }
 }
