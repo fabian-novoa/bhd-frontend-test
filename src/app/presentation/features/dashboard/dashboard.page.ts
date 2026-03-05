@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
-import { AuthFacade } from '@presentation/facades';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { walletOutline, swapHorizontalOutline, pricetagOutline, settingsOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,21 +9,19 @@ import { AuthFacade } from '@presentation/facades';
   styleUrls: ['./dashboard.page.scss'],
   standalone: true,
   imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonButton
+    IonTabs,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonLabel
   ]
 })
 export class DashboardPage implements OnInit {
-  private authFacade = inject(AuthFacade);
-
-  ngOnInit(): void {
-    console.log('Dashboard loaded successfully');
+  constructor() {
+    addIcons({ walletOutline, swapHorizontalOutline, pricetagOutline, settingsOutline });
   }
 
-  onLogout(): void {
-    this.authFacade.logout();
+  ngOnInit(): void {
+    console.log('Dashboard initialized');
   }
 }

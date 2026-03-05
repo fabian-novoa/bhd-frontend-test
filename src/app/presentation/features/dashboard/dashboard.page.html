@@ -1,19 +1,23 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Dashboard BHD</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="products">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Mis productos</ion-label>
+    </ion-tab-button>
 
-<ion-content class="ion-padding">
-  <div class="dashboard-placeholder">
-    <h2>¡Bienvenido a BHD!</h2>
-    <p>Has iniciado sesión correctamente.</p>
-    <p class="info-text">
-      Próximamente verás tus productos y movimientos aquí.
-    </p>
-    
-    <ion-button expand="block" (click)="onLogout()" color="danger">
-      Cerrar Sesión
-    </ion-button>
-  </div>
-</ion-content>
+    <ion-tab-button tab="transactions">
+      <ion-icon name="swap-horizontal-outline"></ion-icon>
+      <ion-label>Transacciones</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="offers">
+      <ion-icon name="pricetag-outline"></ion-icon>
+      <ion-label>Ofertas</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon name="settings-outline"></ion-icon>
+      <ion-label>Configuración</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

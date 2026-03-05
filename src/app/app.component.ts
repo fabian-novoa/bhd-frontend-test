@@ -1,27 +1,54 @@
 
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink } from '@ionic/angular/standalone';
+import { Component, inject, computed } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonAvatar } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
+import { walletOutline, swapHorizontalOutline, pricetagOutline, settingsOutline, callOutline, businessOutline, logOutOutline } from 'ionicons/icons';
+import { DashboardFacade, AuthFacade } from '@presentation/facades';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet],
+  imports: [RouterLink, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonAvatar],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+  private dashboardFacade = inject(DashboardFacade);
+  private authFacade = inject(AuthFacade);
+  private router = inject(Router);
+
+  readonly user = this.dashboardFacade.user;
+  readonly fullName = computed(() => {
+    const u = this.user();
+    return u ? `${u.name} ${u.lastName}` : '';
+  });
+
+  public mainMenuItems = [
+    { title: 'Mis Productos', url: '/dashboard/products', icon: 'wallet-outline' },
+    { title: 'Transacciones', url: '/dashboard/transactions', icon: 'swap-horizontal-outline' },
+    { title: 'Ofertas', url: '/dashboard/offers', icon: 'pricetag-outline' },
+    { title: 'Configuración', url: '/dashboard/settings', icon: 'settings-outline' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
+  public secondaryMenuItems = [
+    { title: 'Contacto', url: '#', icon: 'call-outline' },
+    { title: 'Sucursales', url: '#', icon: 'business-outline' },
+  ];
+
   constructor() {
-    addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
+    addIcons({ walletOutline, swapHorizontalOutline, pricetagOutline, settingsOutline, callOutline, businessOutline, logOutOutline });
+  }
+
+  onLogout(): void {
+    this.authFacade.logout();
+  }
+
+  isLoginPage(): boolean {
+    return this.router.url.includes('/login');
+  }
+
+  isAuthenticated(): boolean {
+    return !this.isLoginPage();
   }
 }
+

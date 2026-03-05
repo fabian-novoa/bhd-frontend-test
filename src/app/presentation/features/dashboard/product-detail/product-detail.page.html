@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (product) {
+    <ion-card [class]="isAccount() ? 'account-card' : 'card-card'">
+      <ion-card-header>
+        <ion-card-subtitle>{{ product.alias }}</ion-card-subtitle>
+        <ion-card-title>{{ product.number }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        @if (isAccount()) {
+          <div class="info-row">
+            <span class="label">Saldo disponible</span>
+            <span class="value">{{ account.availableAmount | currency: 'RD' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Tipo de producto</span>
+            <span class="value">Cuenta de Ahorro</span>
+          </div>
+        }
+
+        @if (isCreditCard()) {
+          <div class="info-row">
+            <span class="label">Disponible RD$</span>
+            <span class="value">{{ creditCard.availableAmountRD | currency: 'RD' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Disponible US$</span>
+            <span class="value">{{ creditCard.availableAmountUS | currency: 'US' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Tipo</span>
+            <span class="value">
+              {{ creditCard.isInternational ? 'Internacional' : 'Nacional' }}
+            </span>
+          </div>
+        }
+      </ion-card-content>
+    </ion-card>
+
+    <div class="placeholder-message">
+      <ion-text color="medium">
+        <p>Movimientos y detalles adicionales estarán disponibles próximamente.</p>
+      </ion-text>
+    </div>
+  }
+</ion-content>
