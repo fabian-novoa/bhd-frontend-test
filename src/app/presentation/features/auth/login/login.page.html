@@ -14,7 +14,12 @@
     }
 
     <div class="logo-section">
-      <img src="/assets/images/bhd_logo.png" alt="Banco BHD León" />
+      <img 
+        src="/assets/images/bhd_logo.png" 
+        alt="Banco BHD León" 
+        (click)="openOnboarding()"
+        class="clickable-logo"
+      />
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">

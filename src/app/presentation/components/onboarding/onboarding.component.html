@@ -1,0 +1,40 @@
+<ion-content class="onboarding-content">
+  <div class="onboarding-container">
+    
+    <div class="swiper-wrapper-custom">
+      <swiper-container
+        class="onboarding-swiper"
+        [pagination]="{enabled: true, clickable: true}"
+        (slidechange)="onSlideChange($event)"
+      >
+        @for (slide of slides; track $index) {
+        <swiper-slide>
+          <div class="slide-content">
+            <div class="slide-text">
+              <h2>{{ slide.title }}</h2>
+              @if (slide.description) {
+                <p>{{ slide.description }}</p>
+              }
+            </div>
+            <div class="slide-image">
+              <img [src]="slide.image" [alt]="slide.title" />
+            </div>
+          </div>
+        </swiper-slide>
+        }
+      </swiper-container>
+    </div>
+
+    <div class="button-container">
+      <ion-button
+        expand="block"
+        (click)="nextSlide()"
+        class="continue-button"
+        fill="clear"
+      >
+        CONTINUAR
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

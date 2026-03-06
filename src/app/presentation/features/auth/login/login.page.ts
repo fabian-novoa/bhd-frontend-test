@@ -1,8 +1,9 @@
 import { Component, inject, OnInit, signal, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonContent, IonSpinner, IonInput, IonButton, IonItem, IonText, IonMenuButton, IonToggle } from '@ionic/angular/standalone';
+import { IonContent, IonSpinner, IonInput, IonButton, IonItem, IonText, IonMenuButton, IonToggle, ModalController } from '@ionic/angular/standalone';
 import { AuthFacade } from '@presentation/facades';
+import { OnboardingComponent } from '@presentation/components/onboarding/onboarding.component';
 import * as feather from 'feather-icons';
 
 @Component({
@@ -26,6 +27,7 @@ export class LoginPage implements OnInit, AfterViewInit {
   private fb = inject(FormBuilder);
   private authFacade = inject(AuthFacade);
   private router = inject(Router);
+  private modalController = inject(ModalController);
 
   loginForm!: FormGroup;
   rememberMe = signal(false);
@@ -83,6 +85,14 @@ export class LoginPage implements OnInit, AfterViewInit {
 
   dismissError(): void {
     this.authFacade.clearError();
+  }
+
+  async openOnboarding(): Promise<void> {
+    const modal = await this.modalController.create({
+      component: OnboardingComponent,
+      cssClass: 'onboarding-modal'
+    });
+    await modal.present();
   }
 
   get userIdControl() {
